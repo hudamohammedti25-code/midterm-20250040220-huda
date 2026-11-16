@@ -22,4 +22,5 @@ Server runs on http://localhost:3000
 | DELETE | /menus/:id | Delete item, needs header `x-auth-token: secret123` (else 401) | 200 |
 | GET | /menus/category{/:name} | Filter by category, no name shows all | 200 |
 | GET | /files/*path | Shows the wildcard path as an array | 200 |
+| GET | /menus/search?name=... | Search items by name using a query string (bonus) | 200 |
 | GET | any unknown URL | 404 from the 404 handler | 404 |
