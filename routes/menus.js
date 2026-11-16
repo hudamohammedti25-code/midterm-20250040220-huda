@@ -59,6 +59,18 @@ router.get('/category{/:name}', (req, res) => {
   res.json(result);
 });
 
+// Search by name using a query string: /menus/search?name=latte
+router.get('/search', (req, res) => {
+  const { name } = req.query;
+  if (!name) {
+    return res.status(400).json({ error: 'name query is required' });
+  }
+  const result = menus.filter((m) =>
+    m.name.toLowerCase().includes(name.toLowerCase())
+  );
+  res.json(result);
+});
+
 router.route('/:id')
   .get(async (req, res) => {
     res.json(findMenu(req.params.id));
